@@ -3,7 +3,7 @@
 FROM node:latest
 ENV NODE_ENV=production
 WORKDIR /app
-COPY ["package.json", "package-lock.json*", "./"]
-RUN npm install --production
-COPY . .
-CMD [ "node", "index.js" ]
+COPY package.json /app
+RUN npm install
+COPY . /app
+CMD node index.js

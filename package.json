@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "realm": "^10.4.2"
+    "realm": "^10.4.2",
+    "source-map-resolve": "^0.5.3"
   }
 }
