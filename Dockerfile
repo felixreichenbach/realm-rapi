@@ -1,9 +1,9 @@
 # syntax=docker/dockerfile:1
-
 FROM node:latest
-ENV NODE_ENV=production
 WORKDIR /app
-COPY package.json /app
+COPY package*.json ./
 RUN npm install
-COPY . /app
-CMD node index.js
+# If you are building your code for production
+# RUN npm ci --only=production
+COPY . .
+CMD ["node", "src/index.js"]

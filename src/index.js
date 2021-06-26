@@ -2,7 +2,7 @@ const Realm = require("realm");
 const BSON = require("bson");
 
 // Update this with your App ID
-const app = new Realm.App({ id: "myiot-chjfq" });
+const app = new Realm.App({ id: "myiot-sxwcb" });
 const TaskSchema = {
   name: "Task",
   properties: {
@@ -66,10 +66,10 @@ async function run() {
     task = null;
   });
 
-  // Clean up
-  tasks.removeListener(taskListener);
-  realm.close();
-  app.currentUser.logOut();
+  // Clean up and shutdown
+  // tasks.removeListener(taskListener);
+  // realm.close();
+  // app.currentUser.logOut();
 }
 run().catch(err => {
   console.error(err)
