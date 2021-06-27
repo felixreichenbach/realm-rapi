@@ -2,7 +2,7 @@ const Realm = require("realm");
 const BSON = require("bson");
 
 // Update this with your App ID
-const app = new Realm.App({ id: "myiot-sxwcb" });
+const app = new Realm.App({ id: process.env.REALM_APPID });
 const TaskSchema = {
   name: "Task",
   properties: {
