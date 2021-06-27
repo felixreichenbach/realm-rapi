@@ -36,13 +36,13 @@ async function run() {
   // Add a couple of Tasks in a single, atomic transaction
   // Realm automatically sets the _partition property based on the partitionValue used to open the realm
   realm.write(() => {
-      console.log("write")
+    console.log("write")
     const task1 = realm.create("Task", {
       _id: new BSON.ObjectID(),
       name: "go grocery shopping",
       status: "Open",
     });
-    
+
     const task2 = realm.create("Task", {
       _id: new BSON.ObjectID(),
       name: "go exercise",
@@ -66,10 +66,14 @@ async function run() {
     task = null;
   });
 
-  // Clean up and shutdown
-  // tasks.removeListener(taskListener);
-  // realm.close();
-  // app.currentUser.logOut();
+  // Clean up and shutdown application
+  process.on('SIGINT', () => {
+    tasks.removeListener(taskListener);
+    realm.close();
+    app.currentUser.logOut();
+    console.log("Cleaned up and shutting down")
+    process.exit(0)
+  })
 }
 run().catch(err => {
   console.error(err)
@@ -98,3 +102,6 @@ function taskListener(tasks, changes) {
     // ...
   });
 }
+
+
+
